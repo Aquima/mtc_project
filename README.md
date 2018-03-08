@@ -6,8 +6,8 @@ es decir tendran un branch o rama para poder descargar la clase respectiva, adun
 
 ## Code Example
 ## Branch:
-##Sesion 01
+## Sesion 01
 video: https://youtu.be/sP4-AVIqCZQ
 
-##Sesion 02
+## Sesion 02
 video: en construcción
