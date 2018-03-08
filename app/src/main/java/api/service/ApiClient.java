@@ -2,6 +2,7 @@ package api.service;
 
 import java.util.List;
 
+import api.model.Follower;
 import api.model.Repository;
 
 import retrofit2.Call;
@@ -15,5 +16,6 @@ import retrofit2.http.Path;
 public interface ApiClient {
     @GET("/users/{user}/repos")
     Call<List<Repository>> reposForUser(@Path("user") String user);
-
+    @GET("/users/{user}/followers")
+    Call<List<Follower>> followersForUser(@Path("user") String user);
 }

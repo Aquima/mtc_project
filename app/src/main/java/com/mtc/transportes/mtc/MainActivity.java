@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import java.util.List;
 
+import api.model.Follower;
 import api.model.Repository;
 import api.service.ApiClient;
 import retrofit2.Call;
@@ -26,7 +27,34 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
     }
+    public void getFollowers(View view){
+        //String message = "i'm here in MTC";
+        //Log.v("MTC",message);
 
+
+        Retrofit.Builder builder = new Retrofit.Builder()
+                .baseUrl("https://api.github.com/")
+                .addConverterFactory(GsonConverterFactory.create());
+
+        Retrofit retrofit = builder.build();
+
+        ApiClient client = retrofit.create(ApiClient.class);
+        Call<List<Follower>> call = client.followersForUser("aquima");
+
+        call.enqueue(new Callback<List<Follower>>() {
+            @Override
+            public void onResponse(Call<List<Follower>> call, Response<List<Follower>> response) {
+                List<Follower> followers = response.body();
+
+            }
+
+            @Override
+            public void onFailure(Call<List<Follower>> call, Throwable t) {
+                Toast.makeText(MainActivity.this,"Houston i have a problem",Toast.LENGTH_SHORT).show();
+
+            }
+        });
+    }
     public void goToProfile(View view){
         //String message = "i'm here in MTC";
         //Log.v("MTC",message);
